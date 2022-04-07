@@ -28,8 +28,12 @@
             </div>
 
             <div class="form-group">
-                <label>성별</label>
-                <input type="text" class="form-control" name="memberGENDER" th:value="${memberdto.memberGENDER}" placeholder="수정할 성별을 입력해주세요">
+                <label>성별</label><p>
+                <input type="radio" name="memberGENDER" value="여" checked>
+                <span>여자</span>
+                <input type="radio" name="memberGENDER" value="남">
+                <span>남자</span>
+            </p>
             </div>
 
             <div class="form-group">
