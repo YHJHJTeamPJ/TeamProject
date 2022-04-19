@@ -5,38 +5,8 @@
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
     <!-- layout 에 출력할 내용 -->
     <th:block th:fragment="content">
-
         <h1 class="mt-4">Api List Page
-
         </h1>
-
-        <!-- 검색 폼 -->
-<!--        <form action="/board/basketball" method="get" id="searchForm">-->
-<!--            <div class="input-group">-->
-<!--                &lt;!&ndash; 기본 페이지 번호를 숨김으로 생성 &ndash;&gt;-->
-<!--                <input type="hidden" name="page" value = "1">-->
-<!--                <div class="input-group-prepend">-->
-<!--                    &lt;!&ndash; 검색 조건 선택 &ndash;&gt;-->
-<!--                    <select class="custom-select" name="type">-->
-<!--                        <option th:selected="${pageRequestDTO.type == null}">-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-<!--                        <option value="t" th:selected="${pageRequestDTO.type =='t'}" >제목</option>-->
-<!--                        <option value="c" th:selected="${pageRequestDTO.type =='c'}"  >내용</option>-->
-<!--                        <option value="w"  th:selected="${pageRequestDTO.type =='w'}" >작성자</option>-->
-<!--                        <option value="tc"  th:selected="${pageRequestDTO.type =='tc'}" >제목 + 내용</option>-->
-<!--                        <option value="tcw"  th:selected="${pageRequestDTO.type =='tcw'}" >제목 + 내용 + 작성자</option>-->
-<!--                    </select>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash; 검색할 키워드 입력&ndash;&gt;-->
-<!--                <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">-->
-
-<!--                &lt;!&ndash; 검색 버튼 과 초기화 해서 검색하는 버튼 &ndash;&gt;-->
-<!--                <div class="input-group-append" id="button-addon4">-->
-<!--                    <button class="btn btn-outline-secondary btn-search" type="button">Search</button>-->
-<!--                    <button class="btn btn-outline-secondary btn-clear" type="button">Clear</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </form>-->
 
         <!-- 데이터 목록 출력 -->
         <table class="table table-striped">
@@ -52,7 +22,7 @@
                 <th scope="col">결제방법</th>
                 <th scope="col">장소명</th>
                 <th scope="col">서비스대상</th>
-                <th scope="col">URL</th>
+                <th scope="col">예약링크</th>
                 <th scope="col">지역명</th>
                 <th scope="col">전화번호</th>
             </tr>
@@ -61,11 +31,6 @@
             <tr th:each="dto : ${result}" >
                 <!-- 글 번호 출력 -->
                 <th scope="row">
-                    <!-- 상세보기 링크 -->
-<!--                    <a th:href="@{/board/apiread(apino = ${dto.apino},-->
-<!--                    page= ${result.page},-->
-<!--                    type=${pageRequestDTO.type},-->
-<!--                    keyword = ${pageRequestDTO.keyword})}">-->
                         [[${dto.apino}]]
                 </th>
                 <th>[[${dto.gubun}]]</th>
@@ -76,36 +41,12 @@
                 <th>[[${dto.payatnm}]]</th>
                 <th>[[${dto.placenm}]]</th>
                 <th>[[${dto.usetgtinfo}]]</th>
-                <th>[[${dto.svcurl}]]</th>
+                <th><a th:href="@{${dto.svcurl}}" target="_blank">바로가기</a></th>
                 <th>[[${dto.areanm}]]</th>
                 <th>[[${dto.telno}]]</th>
             </tr>
             </tbody>
         </table>
-
-<!--        &lt;!&ndash; 페이지 번호 출력 &ndash;&gt;-->
-<!--        <ul class="pagination h-100 justify-content-center align-items-center">-->
-<!--            &lt;!&ndash; 이전 &ndash;&gt;-->
-<!--            <li class="page-item " th:if="${result.prev}">-->
-<!--                <a class="page-link" th:href="@{/board/basketball(page= ${result.start -1},-->
-<!--                    type=${pageRequestDTO.type} ,-->
-<!--                    keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Previous</a>-->
-<!--            </li>-->
-<!--            &lt;!&ndash; 페이지 번호 - 현재 페이지 번호에는 링크를 설정하지 않음 &ndash;&gt;-->
-<!--            <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">-->
-<!--                <a class="page-link" th:href="@{/board/basketball(page = ${page} ,-->
-<!--                   type=${pageRequestDTO.type} ,-->
-<!--                   keyword = ${pageRequestDTO.keyword}  )}">-->
-<!--                    [[${page}]]-->
-<!--                </a>-->
-<!--            </li>-->
-<!--            &lt;!&ndash; 다음 &ndash;&gt;-->
-<!--            <li class="page-item" th:if="${result.next}">-->
-<!--                <a class="page-link" th:href="@{/board/basketball(page= ${result.end + 1} ,-->
-<!--                    type=${pageRequestDTO.type} ,-->
-<!--                    keyword = ${pageRequestDTO.keyword} )}">Next</a>-->
-<!--            </li>-->
-<!--        </ul>-->
 
     </th:block>
 </th:block>

@@ -24,7 +24,7 @@ import java.util.List;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-public class RestApiController {
+public class OpenApiController {
     private final ApiService apiService;
     private final ApiRepository apiRepository;
 
@@ -32,9 +32,9 @@ public class RestApiController {
     public String callApiWithJson(Model model) throws Exception {
         StringBuilder sb = new StringBuilder();
 
-        // 1. URL을 만들기 위한 StringBuilder.
-        StringBuilder urlBuilder = new StringBuilder("http://openAPI.seoul.go.kr:8088/69436867646a686a313031457758656b/json/ListPublicReservationSport/1/50/"); /*URL*/
-        // 2. 오픈 API의요청 규격에 맞는 파라미터 생성, 발급받은 인증키.
+        // 1. URL을 만들기 위한 StringBuilder, 발급받은 인증키.
+        StringBuilder urlBuilder = new StringBuilder("http://openAPI.seoul.go.kr:8088/69436867646a686a313031457758656b/json/ListPublicReservationSport/2/50/"); /*URL*/
+        // 2. 오픈 API의요청 규격에 맞는 파라미터 생성
         urlBuilder.append(URLEncoder.encode("농구장", "UTF-8"));
 
         URL url = new URL(urlBuilder.toString());
@@ -92,7 +92,6 @@ public class RestApiController {
         //4. model에 담아준다.
         List<ApiDTO> list1 = apiService.get();
         model.addAttribute("result", list1);
-        System.out.println(list);
         return "/board/basketball";
     }
 
