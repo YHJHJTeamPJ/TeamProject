@@ -2,7 +2,9 @@ package kr.co.hjsoft.controller;
 
 import kr.co.hjsoft.dto.MemberDTO;
 import kr.co.hjsoft.dto.PageRequestDTO;
+import kr.co.hjsoft.entity.Member;
 import kr.co.hjsoft.repository.MemberRepository;
+import kr.co.hjsoft.service.BoardService;
 import kr.co.hjsoft.service.MemberService;
 import kr.co.hjsoft.service.MemberServiceImpl;
 import lombok.AllArgsConstructor;
@@ -22,11 +24,10 @@ import java.util.logging.Logger;
 @Controller
 @AllArgsConstructor
 @Log4j2
-//@RequiredArgsConstructor
 public class MemberController {
     private MemberServiceImpl memberService;
     private final MemberService memberservice2;
-    private MemberRepository memberRepository;
+    private final BoardService boardService;
 
     @GetMapping("/login/signup")
     public String dispSignup(MemberDTO memberdto) {
@@ -81,7 +82,9 @@ public class MemberController {
 
     // 로그인 결과 페이지
     @GetMapping("/login/login/result")
-    public String dispLoginResult() {
+    public String dispLoginResult(Model model,Principal principal) {
+        MemberDTO dto = boardService.getmember(principal.getName());
+        model.addAttribute("dto",dto);
         return "/login/loginSuccess";
     }
 

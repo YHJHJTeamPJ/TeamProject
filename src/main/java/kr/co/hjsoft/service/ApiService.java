@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ApiService {
 
-    public PageResultDTO<ApiDTO, Object[]> getList(PageRequestDTO dto);
+    PageResultDTO<ApiDTO, Object[]> getList(PageRequestDTO dto);
 
-    public List<ApiDTO> get();
+    List<ApiDTO> get();
 
     default Api dtoToEntity(ApiDTO dto){
         Api api = Api.builder()

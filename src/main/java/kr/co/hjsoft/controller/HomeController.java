@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class HomeController {
     private final BoardService boardService;
-    private final ApiService apiService;
     @GetMapping({"/", "/board/list"})
     public String index(){
         return "/board/list";

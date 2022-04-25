@@ -48,7 +48,6 @@ public interface BoardService {
                 .boardCONTENT(board.getBoardCONTENT())
                 .regDATE(board.getRegDate())
                 .modDATE(board.getModDate())
-                .replyCount(replyCount.intValue())
                 .boardNICKNAME(member.getMemberNICKNAME())
                 .build();
         return dto;

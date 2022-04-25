@@ -25,9 +25,6 @@ public class Board extends BaseEntity{
     @Column(length = 100)
     private String boardNICKNAME;
 
-    @Column
-    private Long boardREADCNT;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Member writer;
 
