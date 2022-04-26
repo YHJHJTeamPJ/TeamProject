@@ -2,7 +2,9 @@ package kr.co.hjsoft.service;
 
 import kr.co.hjsoft.dto.MemberDTO;
 import kr.co.hjsoft.entity.Member;
+import kr.co.hjsoft.repository.BoardRepository;
 import kr.co.hjsoft.repository.MemberRepository;
+import kr.co.hjsoft.repository.ReplyRepository;
 import kr.co.hjsoft.role.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +27,8 @@ import java.util.*;
 public class MemberServiceImpl implements UserDetailsService, MemberService {
 
     private final MemberRepository memberRepository;
+    private final BoardRepository boardRepository;
+    private final ReplyRepository replyRepository;
 
     //회원가입 시, 유효성 체크
     @Transactional(readOnly = true)
@@ -81,7 +85,9 @@ public class MemberServiceImpl implements UserDetailsService, MemberService {
 
     @Transactional
     @Override
-    public void delete(String memberEMAIL) {
+    public void delete(String memberEMAIL,String memberNICKNAME) {
+        replyRepository.deleteReplyByReplywriter(memberNICKNAME);
+        boardRepository.deleteBoardByWriter(memberNICKNAME);
         memberRepository.deleteBymemberEMAIL(memberEMAIL);
     }
 
