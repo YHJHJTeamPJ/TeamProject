@@ -13,7 +13,7 @@
             <h1>내정보 확인 페이지입니다.</h1>
             <hr>
 <!--            member 권한을 가진 사용자에게만 버튼 노출-->
-            <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/login/modify}">정보 수정</a>
+            <a th:href="@{/login/modify}">정보 수정</a>
         </body>
     </th:block>
 </th:block>

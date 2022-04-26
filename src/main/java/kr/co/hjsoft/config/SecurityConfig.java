@@ -55,6 +55,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/myinfo").hasRole("MEMBER")
                 .antMatchers("/board/board").hasRole("MEMBER")
+                .antMatchers("/login/myinfo").hasRole("MEMBER")
+                .antMatchers("/chat/chatting").hasRole("MEMBER")
+
                 .antMatchers("/**").permitAll()
                 .and() // 로그인 설정
                 .formLogin()
