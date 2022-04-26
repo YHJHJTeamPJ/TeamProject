@@ -1,4 +1,4 @@
-package kr.co.hjsoft.chat;
+package kr.co.hjsoft.handler;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,14 +20,14 @@ public class ChatHandler extends TextWebSocketHandler {
 		users.put(session.getId(), session);
 		log("1:" + users.values());
 	}
-	
+
 	@Override
 	public void afterConnectionClosed(
 		WebSocketSession session, CloseStatus status) throws Exception {
 		log(session.getId() + " 연결 종료됨");
 		users.remove(session.getId());
 	}
-	
+
 	@Override
 	protected void handleTextMessage(
 		WebSocketSession session, TextMessage message) throws Exception {

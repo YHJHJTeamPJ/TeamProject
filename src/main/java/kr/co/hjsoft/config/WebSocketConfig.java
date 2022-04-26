@@ -1,6 +1,6 @@
-package kr.co.hjsoft;
+package kr.co.hjsoft.config;
 
-import kr.co.hjsoft.chat.ChatHandler;
+import kr.co.hjsoft.handler.ChatHandler;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-    
+
         registry.addHandler(chatHandler, "ws/chat").setAllowedOrigins("*");
     }
 }
