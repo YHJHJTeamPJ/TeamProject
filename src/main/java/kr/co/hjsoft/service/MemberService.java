@@ -15,12 +15,12 @@ public interface MemberService {
     MemberDTO getmember(String memberEMAIL);
 
     //email 중복 확인
-    public int emailCheck(String memberEMAIL);
+    int emailCheck(String memberEMAIL);
 
     //nickname 중복 확인
-    public int nicknameCheck(String memberNICKNAME);
+    int nicknameCheck(String memberNICKNAME);
 
-//    //Member Entity를 ReplyDTO로 변환해주는 메서드
+    //Member Entity를 ReplyDTO로 변환해주는 메서드
     default MemberDTO entityToDTO(Member member){
         MemberDTO memberdto = MemberDTO.builder()
                 .memberADDRESS(member.getMemberADDRESS())
