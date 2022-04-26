@@ -42,9 +42,9 @@ public class HomeController {
         return "/board/football";
     }
 
-    @GetMapping("chat/chatting")
-    public String chatting(){
-        return "/chat/chatting";
-    }
+//    @GetMapping("chat/chatting")
+//    public String chatting(){
+//        return "/chat/chatting";
+//    }
 
 }
