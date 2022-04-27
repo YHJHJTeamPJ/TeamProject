@@ -125,8 +125,8 @@ public class MemberController {
         rattr.addAttribute("memberEAMIL", memberdto.getMemberEMAIL());
         return "redirect:/login/myinfo";
     }
-
     // 회원 탈퇴 페이지
+
     @GetMapping("/login/delete")
     public String dispDelete() {
         return "/login/delete";
