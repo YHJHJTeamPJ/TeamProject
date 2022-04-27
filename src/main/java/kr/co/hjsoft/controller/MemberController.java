@@ -133,11 +133,11 @@ public class MemberController {
     }
 
     @PostMapping("/login/delete")
-    public String remove(String memberEMAIL, RedirectAttributes rattr){
-        memberservice2.delete(memberEMAIL);
+    public String remove(String memberEMAIL,String memberNICKNAME, RedirectAttributes rattr){
+        memberservice2.delete(memberEMAIL,memberNICKNAME);
         //출력할 메시지 저장
         rattr.addFlashAttribute("msg",memberEMAIL + "탈퇴");
         SecurityContextHolder.clearContext(); //회원 탈퇴 시 로그아웃 처리
-        return "redirect:/login/delete";
+        return "redirect:/board/login";
     }
 }

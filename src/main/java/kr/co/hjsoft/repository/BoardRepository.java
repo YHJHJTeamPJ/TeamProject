@@ -4,6 +4,7 @@ import kr.co.hjsoft.entity.Board;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -20,6 +21,10 @@ public interface BoardRepository extends JpaRepository<Board, Long>, SearchBoard
     //하나의 게시글에 댓글이 여러 개 일 수 있어서 리턴 타입은 List
     List<Object []> getBoardWithReply(@Param("boardNUMBER") Long boardNUMBER);
 
+    //회원 탈퇴시 board 자료 날리기
+    @Modifying
+    @Query("delete from Board b where b.boardNICKNAME = :memberNICKNAME")
+    void deleteBoardByWriter(String memberNICKNAME);
     //목록 보기를 위한 메서드
     //JPQL 에서는 Page 단위로 리턴할 때 countQuery 가 필수
     @Query(value = "select b, w, count(r) from Board b LEFT JOIN b.writer w LEFT JOIN Reply r ON r.board = b GROUP BY b",

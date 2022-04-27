@@ -23,4 +23,8 @@ public interface ReplyRepository extends JpaRepository<Reply, Long> {
     @Query("select r, w from Reply r left join r.replywriter w where r.replyNUMBER = :replyNUMBER")
     Object getBoardWithWriter(@Param("replyNUMBER") Long replyNUMBER);
 
+    //회원 탈퇴시 board 자료 날리기
+    @Modifying
+    @Query("delete from Reply r where r.memberNICKNAME = :memberNICKNAME")
+    void deleteReplyByReplywriter(String memberNICKNAME);
 }

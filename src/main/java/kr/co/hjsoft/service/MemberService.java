@@ -9,7 +9,7 @@ public interface MemberService {
     //데이터 수정을 위한 메소드
     void modify(MemberDTO memberdto);
     //데이터 삭제를 위한 메소드
-    void delete(String memberEMAIL);
+    void delete(String memberEMAIL,String memberNICKNAME);
 
     //사용자 정보 가져오는 메소드
     MemberDTO getmember(String memberEMAIL);
