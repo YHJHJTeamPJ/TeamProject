@@ -41,7 +41,7 @@
 			send();
 		});
 
-		const websocket = new WebSocket("ws://localhost/ws/chat");
+		const websocket = new WebSocket("ws://localhost:8080/ws/chat");
 
 		websocket.onmessage = onMessage;
 		websocket.onopen = onOpen;

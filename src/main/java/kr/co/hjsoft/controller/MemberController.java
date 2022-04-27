@@ -123,7 +123,7 @@ public class MemberController {
     public String modify(MemberDTO memberdto, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, RedirectAttributes rattr){
         memberservice2.modify(memberdto);
         rattr.addAttribute("memberEAMIL", memberdto.getMemberEMAIL());
-        return "redirect:/login/modify";
+        return "redirect:/login/myinfo";
     }
 
     // 회원 탈퇴 페이지
