@@ -17,7 +17,7 @@
         <h1>회원 가입</h1>
         <hr>
 
-        <form th:action="@{/login/signup}" method="post" modelAttribute="memberdto">
+        <form th:action="@{/login/signup}" name="join_form" method="post" modelAttribute="memberdto">
             <div class="form-group">
                 <label>이름</label>
                 <input type="text" class="form-control" name="memberNAME" th:value="${memberdto?.memberNAME}" placeholder="이름을 입력해주세요.">
@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label>성별</label><p>
-                <input type="radio" name="memberGENDER" value="여" checked>
+                <input type="radio" name="memberGENDER" value="여">
                 <span>여자</span>
                 <input type="radio" name="memberGENDER" value="남">
                 <span>남자</span>
@@ -69,7 +69,7 @@
             <!--"검색" 단추를 누르면 팝업 레이어가 열리도록 설정한다-->
             <script> $(function() {$("#postcodify_search_button").postcodifyPopUp(); });</script>
 
-            <button type="submit" class="btn btn-primary">가입</button>
+            <button type="submit" class="btn btn-primary" onclick="joinform_check();">가입</button>
 
         </form>
         </body>
@@ -82,6 +82,68 @@
                     genderChoice = memberGENDER[i].value;
                 }
             }
+
+            // //joinform_check 함수로 유효성 검사
+            // function joinform_check() {
+            //     //변수에 담아 주기
+            //     var memberNAME = document.getElementById("memberNAME");
+            //     var memberGENDER = document.getElementById("memberGENDER");
+            //     var memberNICKNAME = document.getElementById("memberNICKNAME");
+            //     var memberEMAIL = document.getElementById("memberEMAIL");
+            //     var memberPW = document.getElementById("memberPW");
+            //     // var memberADDRESS = document.getElementById("memberADDRESS");
+            //     var memberPHONE = document.getElementById("memberPHONE");
+            //
+            //     if (memberNAME.value == "") {
+            //         alert("이름을 입력하세요");
+            //         memberNAME.focus();
+            //         return false;
+            //     };
+            //
+            //     if(!memberGENDER.checked){
+            //         alert("성별을 선택해주세요");
+            //         memberGENDER.focus();
+            //         return false;
+            //     };
+            //
+            //     if(memberNICKNAME.value == ""){
+            //         alert("별명을 입력하세요");
+            //         memberNICKNAME.focus();
+            //         return false;
+            //     };
+            //
+            //     if(memberEMAIL.value == ""){
+            //         alert("이메일을 입력하세요");
+            //         memberEMAIL.focus();
+            //         return false;
+            //     };
+            //
+            //     if(memberPW.value==""){
+            //         alert("비밀번호를 입력하세요");
+            //         memberPW.focus();
+            //         return false;
+            //     };
+            //
+            //     //비밀번호 정규식
+            //     var pwCheck = /^(?=,*[a-zA-Z])(?=,*[!@#$%^*+=-])(?=,*[0-9]),{8,25}$/;
+            //     if(!pwCheck.test(memberPW.value)){
+            //         alert("비밀번호는 영문자+문자+특수문자 조합으로 8~25자리 사용해야 합니다");
+            //         memberPW.focus();
+            //         return false;
+            //     };
+            //
+            //     var reg = /^[0-9]+/g; //숫자만 입력 정규식
+            //
+            //     if(!reg.test(memberPHONE.value)){
+            //         alert("전화번호는 숫자만 입력할 수 있씁니다");
+            //         memberPHONE.focus();
+            //         return false;
+            //     };
+            //
+            //     //입력 값 전송
+            //     document.join_form.submit();
+            //
+            // }
 
             //email 중복검사
             function checkId(){
@@ -144,6 +206,8 @@
                     }
                 });
             };
+
+
 
         </script>
     </th:block>
